@@ -1,0 +1,1 @@
+﻿public record CategoryDto(int CategoryId, string Name, string Description);

@@ -1,0 +1,17 @@
+<Solution>
+  <Folder Name="/Elementos de la solución/">
+    <File Path=".gitignore" />
+    <File Path="docker-compose.yml" />
+    <File Path="Dockerfile" />
+    <File Path="README.md" />
+  </Folder>
+  <Folder Name="/src/">
+    <Project Path="src/ApiTest.Api/ApiTest.Api.csproj" />
+    <Project Path="src/ApiTest.Application/ApiTest.Application.csproj" />
+    <Project Path="src/ApiTest.Domain/ApiTest.Domain.csproj" />
+    <Project Path="src/ApiTest.Infrastructure/ApiTest.Infrastructure.csproj" />
+  </Folder>
+  <Folder Name="/tests/">
+    <Project Path="tests/ApiTest.UnitTests/ApiTest.UnitTests.csproj" />
+  </Folder>
+</Solution>

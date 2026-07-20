@@ -1,0 +1,35 @@
+version: '3.8'
+
+services:
+  # Servicio 1: Base de Datos SQL Server
+  db:
+    image: mcr.microsoft.com/mssql/server:2022-latest
+    container_name: sql_server_container
+    environment:
+      - ACCEPT_EULA=Y
+      - MSSQL_SA_PASSWORD=ZeroDawn@26
+    ports:
+      - "1433:1433"
+    networks:
+      - inventory_network
+
+  # Servicio 2: Tu Web API .NET
+  api:
+    image: apitest-api
+    container_name: apitest_api_container
+    build:
+      context: .
+      dockerfile: src/ApiTest.Api/Dockerfile
+    ports:
+      - "8080:8080"
+    environment:
+      - ASPNETCORE_ENVIRONMENT=Development
+      - ConnectionStrings__DefaultConnection=Server=db;Database=ApiTestDb;User Id=sa;Password=ZeroDawn@26;TrustServerCertificate=True;
+    depends_on:
+      - db
+    networks:
+      - inventory_network
+
+networks:
+  inventory_network:
+    driver: bridge

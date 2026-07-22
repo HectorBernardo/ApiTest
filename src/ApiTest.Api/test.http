@@ -3,7 +3,7 @@
 
 # OBTIENE LA LISTA DE PRODUCTOS
 GET http://localhost:8080/api/products
-
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJodHRwOi8vc2NoZW1hcy54bWxzb2FwLm9yZy93cy8yMDA1LzA1L2lkZW50aXR5L2NsYWltcy9uYW1lIjoiQWRtaW5Vc2VyIiwiZXhwIjoxNzg0NzQ4ODg4LCJpc3MiOiJBcGlUZXN0IiwiYXVkIjoiQXBpVGVzdFVzZXJzIn0.L59sHSCuDnyITH79DdbuJwg5aPDQZ3GjIcdaOPcsGZQ
 
 ### OBTIENE UN PRODUCTO ESPECIFICO
 
@@ -11,6 +11,7 @@ http://localhost:8080/api/products/2
 
 ### INSERTA UN NUEVO PRODUCTO
 POST http://localhost:8080/api/products
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJodHRwOi8vc2NoZW1hcy54bWxzb2FwLm9yZy93cy8yMDA1LzA1L2lkZW50aXR5L2NsYWltcy9uYW1lIjoiQWRtaW5Vc2VyIiwiZXhwIjoxNzg0NzQ4ODg4LCJpc3MiOiJBcGlUZXN0IiwiYXVkIjoiQXBpVGVzdFVzZXJzIn0.L59sHSCuDnyITH79DdbuJwg5aPDQZ3GjIcdaOPcsGZQ
 Content-Type: application/json
 
 {
@@ -18,17 +19,18 @@ Content-Type: application/json
   "description": "Teclado profesional gammer",
   "price": 149.99,
   "stock": 10,
-  "categoryId": 1
+  "categoryId": 6
 }
 
 ### ACTUALIZA EL STOCK
 
 POST http://localhost:8080/api/products/movements
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJodHRwOi8vc2NoZW1hcy54bWxzb2FwLm9yZy93cy8yMDA1LzA1L2lkZW50aXR5L2NsYWltcy9uYW1lIjoiQWRtaW5Vc2VyIiwiZXhwIjoxNzg0NzUzODkzLCJpc3MiOiJBcGlUZXN0IiwiYXVkIjoiQXBpVGVzdFVzZXJzIn0.wRkN4llLTI4kfesdmVpzMNsEt6ZaajsH4mHUGqQDLKk
 Content-Type: application/json
 
 {
-    "productId": 2,
-    "quantity": 100,
+    "productId": 3,
+    "quantity": 1,
     "movementType": "Output",
     "reason": "Venta al cliente final"
 }
@@ -36,23 +38,25 @@ Content-Type: application/json
 ### ELIMINA DE FORMA LOGICA UN PRODUCTO
 
 DELETE http://localhost:8080/api/products/1
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJodHRwOi8vc2NoZW1hcy54bWxzb2FwLm9yZy93cy8yMDA1LzA1L2lkZW50aXR5L2NsYWltcy9uYW1lIjoiQWRtaW5Vc2VyIiwiZXhwIjoxNzg0NzQ4ODg4LCJpc3MiOiJBcGlUZXN0IiwiYXVkIjoiQXBpVGVzdFVzZXJzIn0.L59sHSCuDnyITH79DdbuJwg5aPDQZ3GjIcdaOPcsGZQ
 
 ### REACTIVA EL PRODUCTO
 
 PATCH http://localhost:8080/api/products/1/reactivate
-Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJodHRwOi8vc2NoZW1hcy54bWxzb2FwLm9yZy93cy8yMDA1LzA1L2lkZW50aXR5L2NsYWltcy9uYW1lIjoiQWRtaW5Vc2VyIiwiZXhwIjoxNzg0MzI1MDgxLCJpc3MiOiJBcGlUZXN0IiwiYXVkIjoiQXBpVGVzdFVzZXJzIn0.PyxkD9jeFxe6_1rN6lHYNIMihvKy_CMo-U2IWQ7Dkxo
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJodHRwOi8vc2NoZW1hcy54bWxzb2FwLm9yZy93cy8yMDA1LzA1L2lkZW50aXR5L2NsYWltcy9uYW1lIjoiQWRtaW5Vc2VyIiwiZXhwIjoxNzg0NzQ4ODg4LCJpc3MiOiJBcGlUZXN0IiwiYXVkIjoiQXBpVGVzdFVzZXJzIn0.L59sHSCuDnyITH79DdbuJwg5aPDQZ3GjIcdaOPcsGZQ
 
 ### REACTIVA CATEGORIA
 
 PATCH http://localhost:8080/api/categories/1/reactivate
-Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJodHRwOi8vc2NoZW1hcy54bWxzb2FwLm9yZy93cy8yMDA1LzA1L2lkZW50aXR5L2NsYWltcy9uYW1lIjoiQWRtaW5Vc2VyIiwiZXhwIjoxNzg0MzI5MTU4LCJpc3MiOiJBcGlUZXN0IiwiYXVkIjoiQXBpVGVzdFVzZXJzIn0.HKQII77jv2w87bC6wecV1L3X-3Y5d6YiRXE3ROmLJRs
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJodHRwOi8vc2NoZW1hcy54bWxzb2FwLm9yZy93cy8yMDA1LzA1L2lkZW50aXR5L2NsYWltcy9uYW1lIjoiQWRtaW5Vc2VyIiwiZXhwIjoxNzg0NzQ4ODg4LCJpc3MiOiJBcGlUZXN0IiwiYXVkIjoiQXBpVGVzdFVzZXJzIn0.L59sHSCuDnyITH79DdbuJwg5aPDQZ3GjIcdaOPcsGZQ
 
 ### Actualizar descripción y precio de un producto
-PUT http://localhost:8080/api/products/2
+PUT http://localhost:8080/api/products/3
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJodHRwOi8vc2NoZW1hcy54bWxzb2FwLm9yZy93cy8yMDA1LzA1L2lkZW50aXR5L2NsYWltcy9uYW1lIjoiQWRtaW5Vc2VyIiwiZXhwIjoxNzg0NzUzODkzLCJpc3MiOiJBcGlUZXN0IiwiYXVkIjoiQXBpVGVzdFVzZXJzIn0.wRkN4llLTI4kfesdmVpzMNsEt6ZaajsH4mHUGqQDLKk
 Content-Type: application/json
 
 {
-    "productId": 2,
+    "productId": 3,
     "name": "Teclado iluminado mecánico",
     "description": "Teclado profesional con switches rojos",
     "price": 159.99
@@ -60,6 +64,7 @@ Content-Type: application/json
 
 ### Actualizar nombre y descripción de una categoría
 PUT http://localhost:8080/api/categories/1
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJodHRwOi8vc2NoZW1hcy54bWxzb2FwLm9yZy93cy8yMDA1LzA1L2lkZW50aXR5L2NsYWltcy9uYW1lIjoiQWRtaW5Vc2VyIiwiZXhwIjoxNzg0NzQ4ODg4LCJpc3MiOiJBcGlUZXN0IiwiYXVkIjoiQXBpVGVzdFVzZXJzIn0.L59sHSCuDnyITH79DdbuJwg5aPDQZ3GjIcdaOPcsGZQ
 Content-Type: application/json
 
 
@@ -71,24 +76,26 @@ Content-Type: application/json
 
 ### Obtener todas las categorías activas
 GET http://localhost:8080/api/categories
-Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJodHRwOi8vc2NoZW1hcy54bWxzb2FwLm9yZy93cy8yMDA1LzA1L2lkZW50aXR5L2NsYWltcy9uYW1lIjoiQWRtaW5Vc2VyIiwiZXhwIjoxNzg0MzI1MDgxLCJpc3MiOiJBcGlUZXN0IiwiYXVkIjoiQXBpVGVzdFVzZXJzIn0.PyxkD9jeFxe6_1rN6lHYNIMihvKy_CMo-U2IWQ7Dkxo
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJodHRwOi8vc2NoZW1hcy54bWxzb2FwLm9yZy93cy8yMDA1LzA1L2lkZW50aXR5L2NsYWltcy9uYW1lIjoiQWRtaW5Vc2VyIiwiZXhwIjoxNzg0NzQ4ODg4LCJpc3MiOiJBcGlUZXN0IiwiYXVkIjoiQXBpVGVzdFVzZXJzIn0.L59sHSCuDnyITH79DdbuJwg5aPDQZ3GjIcdaOPcsGZQ
 
 ### Obtener una categoría específica
 GET http://localhost:8080/api/categories/2
-Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJodHRwOi8vc2NoZW1hcy54bWxzb2FwLm9yZy93cy8yMDA1LzA1L2lkZW50aXR5L2NsYWltcy9uYW1lIjoiQWRtaW5Vc2VyIiwiZXhwIjoxNzg0MzI1MDgxLCJpc3MiOiJBcGlUZXN0IiwiYXVkIjoiQXBpVGVzdFVzZXJzIn0.PyxkD9jeFxe6_1rN6lHYNIMihvKy_CMo-U2IWQ7Dkxo
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJodHRwOi8vc2NoZW1hcy54bWxzb2FwLm9yZy93cy8yMDA1LzA1L2lkZW50aXR5L2NsYWltcy9uYW1lIjoiQWRtaW5Vc2VyIiwiZXhwIjoxNzg0NzQ4ODg4LCJpc3MiOiJBcGlUZXN0IiwiYXVkIjoiQXBpVGVzdFVzZXJzIn0.L59sHSCuDnyITH79DdbuJwg5aPDQZ3GjIcdaOPcsGZQ
 
 ### Crear nueva categoría
 POST http://localhost:8080/api/categories
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJodHRwOi8vc2NoZW1hcy54bWxzb2FwLm9yZy93cy8yMDA1LzA1L2lkZW50aXR5L2NsYWltcy9uYW1lIjoiQWRtaW5Vc2VyIiwiZXhwIjoxNzg0NzQ4ODg4LCJpc3MiOiJBcGlUZXN0IiwiYXVkIjoiQXBpVGVzdFVzZXJzIn0.L59sHSCuDnyITH79DdbuJwg5aPDQZ3GjIcdaOPcsGZQ
 Content-Type: application/json
 
 {
     "name": "Farmacia",
-    "description": "Artículos cuidado personal"
+    "Description": "Artículos cuidado personal"
 }
-Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJodHRwOi8vc2NoZW1hcy54bWxzb2FwLm9yZy93cy8yMDA1LzA1L2lkZW50aXR5L2NsYWltcy9uYW1lIjoiQWRtaW5Vc2VyIiwiZXhwIjoxNzg0MzI3OTY1LCJpc3MiOiJBcGlUZXN0IiwiYXVkIjoiQXBpVGVzdFVzZXJzIn0.0ypgG5NB1YylerlCPQzWIfs5vAgiGe6LPPy2Vg14R6E
+
 
 ### Actualizar categoría existente
 PUT http://localhost:8080/api/categories/1
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJodHRwOi8vc2NoZW1hcy54bWxzb2FwLm9yZy93cy8yMDA1LzA1L2lkZW50aXR5L2NsYWltcy9uYW1lIjoiQWRtaW5Vc2VyIiwiZXhwIjoxNzg0NzQ4ODg4LCJpc3MiOiJBcGlUZXN0IiwiYXVkIjoiQXBpVGVzdFVzZXJzIn0.L59sHSCuDnyITH79DdbuJwg5aPDQZ3GjIcdaOPcsGZQ
 Content-Type: application/json
 
 {
@@ -96,13 +103,19 @@ Content-Type: application/json
     "name": "Electrónica Actualizada",
     "description": "Nueva descripción"
 }
-Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJodHRwOi8vc2NoZW1hcy54bWxzb2FwLm9yZy93cy8yMDA1LzA1L2lkZW50aXR5L2NsYWltcy9uYW1lIjoiQWRtaW5Vc2VyIiwiZXhwIjoxNzg0MzI3OTY1LCJpc3MiOiJBcGlUZXN0IiwiYXVkIjoiQXBpVGVzdFVzZXJzIn0.0ypgG5NB1YylerlCPQzWIfs5vAgiGe6LPPy2Vg14R6E
+
 
 ### Borrado lógico de una categoría
 DELETE http://localhost:8080/api/categories/3
 Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJodHRwOi8vc2NoZW1hcy54bWxzb2FwLm9yZy93cy8yMDA1LzA1L2lkZW50aXR5L2NsYWltcy9uYW1lIjoiQWRtaW5Vc2VyIiwiZXhwIjoxNzg0MzI5MTU4LCJpc3MiOiJBcGlUZXN0IiwiYXVkIjoiQXBpVGVzdFVzZXJzIn0.HKQII77jv2w87bC6wecV1L3X-3Y5d6YiRXE3ROmLJRs
 
+### Obtener historial
+GET http://localhost:8080/api/Movements
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJodHRwOi8vc2NoZW1hcy54bWxzb2FwLm9yZy93cy8yMDA1LzA1L2lkZW50aXR5L2NsYWltcy9uYW1lIjoiQWRtaW5Vc2VyIiwiZXhwIjoxNzg0NzU2NDE3LCJpc3MiOiJBcGlUZXN0IiwiYXVkIjoiQXBpVGVzdFVzZXJzIn0.R6lhJLgOSoScQ33x08e9fHwEZCSVykF96jI71yR-IiA
+
+
 ### Generar Token de Prueba
 POST http://localhost:8080/api/auth/login
 Content-Type: application/json
+
 

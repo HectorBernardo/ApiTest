@@ -23,7 +23,10 @@ public class CreateProductCommandHandler : IRequestHandler<CreateProductCommand,
         var product = new Product
         {
             Name = request.Name,
-            Price = request.Price
+            Description = request.Description,
+            Price = request.Price,
+            Stock = request.Stock,
+            CategoryId = request.CategoryId
         };
 
         

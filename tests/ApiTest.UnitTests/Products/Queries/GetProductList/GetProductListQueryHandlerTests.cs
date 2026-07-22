@@ -1,7 +1,9 @@
 ﻿using ApiTest.Application.Common.Interfaces;
 using ApiTest.Application.Products.Queries.GetProductsList;
 using ApiTest.Domain.Entities;
+using ApiTest.Infrastructure.Persistence;
 using ApiTest.UnitTests.Helpers;
+using FluentAssertions;
 using Microsoft.EntityFrameworkCore;
 using Moq;
 using System.Collections.Generic;
@@ -22,32 +24,43 @@ namespace ApiTest.UnitTests.Products.Queries.Get
             _mockContext = new Mock<IApplicationDbContext>();
         }
 
-        [Fact(Skip = "Pending configuration of EF Mock with DTO projections")]
+        [Fact]
         public async Task Handle_ReturnsAllProducts()
         {
-            var data = new List<Product>
+            // Arrange
+            var options = new DbContextOptionsBuilder<ApplicationDbContext>()
+                .UseInMemoryDatabase(databaseName: Guid.NewGuid().ToString())
+                .Options;
+
+            using var context = new ApplicationDbContext(options);
+
+            // Sembramos datos de prueba incluyendo la categoría para que el .Include() y el DTO funcionen perfecto
+            var category = new Category { CategoryId = 1, Name = "Electrónica", Description = "Artículos electrónicos" };
+            context.Categories.Add(category);
+
+            context.Products.Add(new Product
             {
-                new Product { ProductId = 1, Name = "Producto 1" },
-                new Product { ProductId = 2, Name = "Producto 2" }
-            }.AsQueryable();
-            
-            var mockSet = new Mock<DbSet<Product>>();
-            
-            mockSet.As<IQueryable<Product>>().Setup(m => m.Provider).Returns(data.Provider);
-            mockSet.As<IQueryable<Product>>().Setup(m => m.Expression).Returns(data.Expression);
-            mockSet.As<IQueryable<Product>>().Setup(m => m.ElementType).Returns(data.ElementType);
-            mockSet.As<IQueryable<Product>>().Setup(m => m.GetEnumerator()).Returns(data.GetEnumerator());
+                ProductId = 1,
+                Name = "Laptop",
+                Description = "Gamer",
+                Price = 1500,
+                Stock = 5,
+                CategoryId = 1,
+                IsDeleted = false,
+                Category = category
+            });
 
-            _mockContext.Setup(c => c.Products).Returns(mockSet.Object);
+            await context.SaveChangesAsync();
 
-            var handler = new GetProductsListQueryHandler(_mockContext.Object);
+            var handler = new GetProductsListQueryHandler(context);
 
             // Act
             var result = await handler.Handle(new GetProductsListQuery(), CancellationToken.None);
 
             // Assert
-            Assert.NotNull(result);
-            Assert.Equal(2, result.Count);
+            result.Should().NotBeNull();
+            result.Should().HaveCount(1);
+            result.Should().Contain(p => p.Name == "Laptop");
         }
     }
 }

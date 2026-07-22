@@ -28,7 +28,7 @@ public class ProductService : IProductService
 
     public async Task UpdateProductAsync(Product product)
     {
-        const string sql = "UPDATE Products SET ... WHERE ProductId = @ProductId";
+        const string sql = "UPDATE Products SET Name = @Name, Description = @Description, Price = @Price WHERE ProductId = @ProductId";
         await _context.Connection.ExecuteAsync(sql, product);
     }
 }

@@ -1,6 +1,8 @@
 using ApiTest.Application;
 using ApiTest.Infrastructure;
+using ApiTest.Infrastructure.Persistence;
 using Microsoft.AspNetCore.Authentication.JwtBearer;
+using Microsoft.EntityFrameworkCore;
 using Microsoft.IdentityModel.Tokens;
 using Swashbuckle.AspNetCore.SwaggerGen;
 using System.Text;
@@ -47,6 +49,21 @@ builder.Services.AddSwaggerGen();
 
 
 var app = builder.Build();
+
+using (var scope = app.Services.CreateScope())
+{
+    var services = scope.ServiceProvider;
+    try
+    {
+        var context = services.GetRequiredService<ApplicationDbContext>(); // Reemplaza "TuDbContext" por el nombre real de tu DbContext
+        context.Database.Migrate(); // Esto crea la base de datos y aplica las migraciones pendientes automáticamente
+    }
+    catch (Exception ex)
+    {
+        var logger = services.GetRequiredService<ILogger<Program>>();
+        logger.LogError(ex, "Ocurrió un error al aplicar las migraciones a la base de datos.");
+    }
+}
 
 app.UseMiddleware<ExceptionHandlingMiddleware>();
 

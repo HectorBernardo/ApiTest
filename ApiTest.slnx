@@ -1,9 +1,12 @@
 <Solution>
   <Folder Name="/Elementos de la solución/">
+    <File Path=".env" />
     <File Path=".gitignore" />
     <File Path="docker-compose.yml" />
     <File Path="Dockerfile" />
+    <File Path="IA_Y_DECISIONES.md" />
     <File Path="README.md" />
+    <File Path="src/ApiTest.Api/test.http" />
   </Folder>
   <Folder Name="/src/">
     <Project Path="src/ApiTest.Api/ApiTest.Api.csproj" />

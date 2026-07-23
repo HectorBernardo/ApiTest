@@ -43,3 +43,16 @@ El caso más reciente fue la documentación con Swagger. Inicialmente, intenté 
 ===========================================
 Aprendizaje: Aprendí que el "código decorativo" no debe comprometer la integridad funcional del proyecto. Opté por documentar la autenticación vía test.http, resultando en una solución más robusta y profesional para pruebas de API.
 ===========================================
+
+===========================================
+3. Nueva Fase: Integración Frontend y Refactorización (Retrospectiva)
+===========================================
+
+Durante la extensión del proyecto para incorporar la interfaz web (`ApiTest.Web`), nos enfrentamos a retos importantes de enrutamiento y mapeo de estados que sirvieron de valioso aprendizaje:
+
+1. Resolución de Enrutamiento y Docker:
+   - Al desplegar la solución completa, las rutas relativas manuales (`/Categories/...`) provocaban errores 404 debido al contexto de los contenedores. 
+   - **Solución implementada:** Migración completa a **Tag Helpers** de ASP.NET Core (`asp-action`, `asp-route-id`) para garantizar que las rutas sean agnósticas al entorno, funcionando de manera idéntica tanto en local como en Docker.
+
+2. Ajuste de Lógica de Negocio y Estados (`IsDeleted`):
+   - Se corrigió la evaluación de la propiedad `IsDeleted` (donde `1` representa activo y `0`/`false` inactivo o eliminado), alineando correctamente los estados visuales (badges) con las acciones de eliminar, editar y reactivar en las vistas Razor (`Index.cshtml`), asegurando una experiencia de usuario fluida y sin bloqueos en los verbos HTTP.

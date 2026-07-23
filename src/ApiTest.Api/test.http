@@ -3,63 +3,66 @@
 
 # OBTIENE LA LISTA DE PRODUCTOS
 GET http://localhost:8080/api/products
-Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJodHRwOi8vc2NoZW1hcy54bWxzb2FwLm9yZy93cy8yMDA1LzA1L2lkZW50aXR5L2NsYWltcy9uYW1lIjoiQWRtaW5Vc2VyIiwiZXhwIjoxNzg0NzQ4ODg4LCJpc3MiOiJBcGlUZXN0IiwiYXVkIjoiQXBpVGVzdFVzZXJzIn0.L59sHSCuDnyITH79DdbuJwg5aPDQZ3GjIcdaOPcsGZQ
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJodHRwOi8vc2NoZW1hcy54bWxzb2FwLm9yZy93cy8yMDA1LzA1L2lkZW50aXR5L2NsYWltcy9uYW1lIjoiQWRtaW5Vc2VyIiwiZXhwIjoxNzg0ODI4NjQ5LCJpc3MiOiJBcGlUZXN0IiwiYXVkIjoiQXBpVGVzdFVzZXJzIn0.syhJdo0NmkRJH8vWzmfih0nRmFolXOxI58u0juChnKY
 
 ### OBTIENE UN PRODUCTO ESPECIFICO
 
-http://localhost:8080/api/products/2
+http://localhost:8080/api/products/3
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJodHRwOi8vc2NoZW1hcy54bWxzb2FwLm9yZy93cy8yMDA1LzA1L2lkZW50aXR5L2NsYWltcy9uYW1lIjoiQWRtaW5Vc2VyIiwiZXhwIjoxNzg0NzkyNDY4LCJpc3MiOiJBcGlUZXN0IiwiYXVkIjoiQXBpVGVzdFVzZXJzIn0.D3JODbRo5GXoNkZ1Zmh1XNJhW8QGZFtxcpu7DUh9FMg
 
 ### INSERTA UN NUEVO PRODUCTO
 POST http://localhost:8080/api/products
-Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJodHRwOi8vc2NoZW1hcy54bWxzb2FwLm9yZy93cy8yMDA1LzA1L2lkZW50aXR5L2NsYWltcy9uYW1lIjoiQWRtaW5Vc2VyIiwiZXhwIjoxNzg0NzQ4ODg4LCJpc3MiOiJBcGlUZXN0IiwiYXVkIjoiQXBpVGVzdFVzZXJzIn0.L59sHSCuDnyITH79DdbuJwg5aPDQZ3GjIcdaOPcsGZQ
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJodHRwOi8vc2NoZW1hcy54bWxzb2FwLm9yZy93cy8yMDA1LzA1L2lkZW50aXR5L2NsYWltcy9uYW1lIjoiQWRtaW5Vc2VyIiwiZXhwIjoxNzg0ODE3NjgyLCJpc3MiOiJBcGlUZXN0IiwiYXVkIjoiQXBpVGVzdFVzZXJzIn0.-87UVxgYwO-Y5RJsdp_SS68wgH-hZ37ZhsPjI5t6rLc
 Content-Type: application/json
 
 {
-  "name": "Teclado iluminado Series X",
+  "name": "Teclado iluminado ",
   "description": "Teclado profesional gammer",
   "price": 149.99,
   "stock": 10,
-  "categoryId": 6
+  "categoryId": 3
 }
 
 ### ACTUALIZA EL STOCK
 
-POST http://localhost:8080/api/products/movements
-Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJodHRwOi8vc2NoZW1hcy54bWxzb2FwLm9yZy93cy8yMDA1LzA1L2lkZW50aXR5L2NsYWltcy9uYW1lIjoiQWRtaW5Vc2VyIiwiZXhwIjoxNzg0NzUzODkzLCJpc3MiOiJBcGlUZXN0IiwiYXVkIjoiQXBpVGVzdFVzZXJzIn0.wRkN4llLTI4kfesdmVpzMNsEt6ZaajsH4mHUGqQDLKk
+POST http://localhost:8080/api/movements/
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJodHRwOi8vc2NoZW1hcy54bWxzb2FwLm9yZy93cy8yMDA1LzA1L2lkZW50aXR5L2NsYWltcy9uYW1lIjoiQWRtaW5Vc2VyIiwiZXhwIjoxNzg0ODMxODk4LCJpc3MiOiJBcGlUZXN0IiwiYXVkIjoiQXBpVGVzdFVzZXJzIn0.fyMPjOHWZZsYrSfkTZoUmvK_ucM_m_IdeJGmMXgKWSY
 Content-Type: application/json
 
 {
-    "productId": 3,
+    "productId": 1002,
     "quantity": 1,
     "movementType": "Output",
-    "reason": "Venta al cliente final"
+    "reason": "prestamo"
 }
 
 ### ELIMINA DE FORMA LOGICA UN PRODUCTO
 
-DELETE http://localhost:8080/api/products/1
-Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJodHRwOi8vc2NoZW1hcy54bWxzb2FwLm9yZy93cy8yMDA1LzA1L2lkZW50aXR5L2NsYWltcy9uYW1lIjoiQWRtaW5Vc2VyIiwiZXhwIjoxNzg0NzQ4ODg4LCJpc3MiOiJBcGlUZXN0IiwiYXVkIjoiQXBpVGVzdFVzZXJzIn0.L59sHSCuDnyITH79DdbuJwg5aPDQZ3GjIcdaOPcsGZQ
+DELETE http://localhost:8080/api/products/3
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJodHRwOi8vc2NoZW1hcy54bWxzb2FwLm9yZy93cy8yMDA1LzA1L2lkZW50aXR5L2NsYWltcy9uYW1lIjoiQWRtaW5Vc2VyIiwiZXhwIjoxNzg0ODI3NjU2LCJpc3MiOiJBcGlUZXN0IiwiYXVkIjoiQXBpVGVzdFVzZXJzIn0.U66xdku8qS1dTLa77F6uvm4tTZrcQuT4pqu1TZLSeV4
 
 ### REACTIVA EL PRODUCTO
 
-PATCH http://localhost:8080/api/products/1/reactivate
-Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJodHRwOi8vc2NoZW1hcy54bWxzb2FwLm9yZy93cy8yMDA1LzA1L2lkZW50aXR5L2NsYWltcy9uYW1lIjoiQWRtaW5Vc2VyIiwiZXhwIjoxNzg0NzQ4ODg4LCJpc3MiOiJBcGlUZXN0IiwiYXVkIjoiQXBpVGVzdFVzZXJzIn0.L59sHSCuDnyITH79DdbuJwg5aPDQZ3GjIcdaOPcsGZQ
+PATCH http://localhost:8080/api/products/3/reactivate
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJodHRwOi8vc2NoZW1hcy54bWxzb2FwLm9yZy93cy8yMDA1LzA1L2lkZW50aXR5L2NsYWltcy9uYW1lIjoiQWRtaW5Vc2VyIiwiZXhwIjoxNzg0ODI3NjU2LCJpc3MiOiJBcGlUZXN0IiwiYXVkIjoiQXBpVGVzdFVzZXJzIn0.U66xdku8qS1dTLa77F6uvm4tTZrcQuT4pqu1TZLSeV4
 
 ### REACTIVA CATEGORIA
 
-PATCH http://localhost:8080/api/categories/1/reactivate
-Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJodHRwOi8vc2NoZW1hcy54bWxzb2FwLm9yZy93cy8yMDA1LzA1L2lkZW50aXR5L2NsYWltcy9uYW1lIjoiQWRtaW5Vc2VyIiwiZXhwIjoxNzg0NzQ4ODg4LCJpc3MiOiJBcGlUZXN0IiwiYXVkIjoiQXBpVGVzdFVzZXJzIn0.L59sHSCuDnyITH79DdbuJwg5aPDQZ3GjIcdaOPcsGZQ
+PATCH http://localhost:8080/api/categories/6/reactivate
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJodHRwOi8vc2NoZW1hcy54bWxzb2FwLm9yZy93cy8yMDA1LzA1L2lkZW50aXR5L2NsYWltcy9uYW1lIjoiQWRtaW5Vc2VyIiwiZXhwIjoxNzg0ODI3NjU2LCJpc3MiOiJBcGlUZXN0IiwiYXVkIjoiQXBpVGVzdFVzZXJzIn0.U66xdku8qS1dTLa77F6uvm4tTZrcQuT4pqu1TZLSeV4
 
 ### Actualizar descripción y precio de un producto
 PUT http://localhost:8080/api/products/3
-Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJodHRwOi8vc2NoZW1hcy54bWxzb2FwLm9yZy93cy8yMDA1LzA1L2lkZW50aXR5L2NsYWltcy9uYW1lIjoiQWRtaW5Vc2VyIiwiZXhwIjoxNzg0NzUzODkzLCJpc3MiOiJBcGlUZXN0IiwiYXVkIjoiQXBpVGVzdFVzZXJzIn0.wRkN4llLTI4kfesdmVpzMNsEt6ZaajsH4mHUGqQDLKk
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJodHRwOi8vc2NoZW1hcy54bWxzb2FwLm9yZy93cy8yMDA1LzA1L2lkZW50aXR5L2NsYWltcy9uYW1lIjoiQWRtaW5Vc2VyIiwiZXhwIjoxNzg0ODI0Njk3LCJpc3MiOiJBcGlUZXN0IiwiYXVkIjoiQXBpVGVzdFVzZXJzIn0._uMJM0jXV-UBzGtsNzQut3Mh8UFm441SQHLp0tfzJd0
 Content-Type: application/json
 
 {
     "productId": 3,
-    "name": "Teclado iluminado mecánico",
-    "description": "Teclado profesional con switches rojos",
-    "price": 159.99
+    "name": "teclado nora",
+    "description": "Teclado rojos",
+    "price": 6.99,
+    "stock": 1,
+    "categoryId": 1006
 }
 
 ### Actualizar nombre y descripción de una categoría
@@ -76,26 +79,26 @@ Content-Type: application/json
 
 ### Obtener todas las categorías activas
 GET http://localhost:8080/api/categories
-Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJodHRwOi8vc2NoZW1hcy54bWxzb2FwLm9yZy93cy8yMDA1LzA1L2lkZW50aXR5L2NsYWltcy9uYW1lIjoiQWRtaW5Vc2VyIiwiZXhwIjoxNzg0NzQ4ODg4LCJpc3MiOiJBcGlUZXN0IiwiYXVkIjoiQXBpVGVzdFVzZXJzIn0.L59sHSCuDnyITH79DdbuJwg5aPDQZ3GjIcdaOPcsGZQ
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJodHRwOi8vc2NoZW1hcy54bWxzb2FwLm9yZy93cy8yMDA1LzA1L2lkZW50aXR5L2NsYWltcy9uYW1lIjoiQWRtaW5Vc2VyIiwiZXhwIjoxNzg0ODIxNzU0LCJpc3MiOiJBcGlUZXN0IiwiYXVkIjoiQXBpVGVzdFVzZXJzIn0.dcX4HWoXEkYuyUpMFY2xE62QwKEKDom4aU5NTUQ2q0w
 
 ### Obtener una categoría específica
-GET http://localhost:8080/api/categories/2
-Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJodHRwOi8vc2NoZW1hcy54bWxzb2FwLm9yZy93cy8yMDA1LzA1L2lkZW50aXR5L2NsYWltcy9uYW1lIjoiQWRtaW5Vc2VyIiwiZXhwIjoxNzg0NzQ4ODg4LCJpc3MiOiJBcGlUZXN0IiwiYXVkIjoiQXBpVGVzdFVzZXJzIn0.L59sHSCuDnyITH79DdbuJwg5aPDQZ3GjIcdaOPcsGZQ
+GET http://localhost:8080/api/categories/1
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJodHRwOi8vc2NoZW1hcy54bWxzb2FwLm9yZy93cy8yMDA1LzA1L2lkZW50aXR5L2NsYWltcy9uYW1lIjoiQWRtaW5Vc2VyIiwiZXhwIjoxNzg0ODUwMTYyLCJpc3MiOiJBcGlUZXN0IiwiYXVkIjoiQXBpVGVzdFVzZXJzIn0.b8pMwjQ6seFrm1Kid_vpeUGWX1XV3Y28DCgJOQETYu0
 
 ### Crear nueva categoría
 POST http://localhost:8080/api/categories
-Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJodHRwOi8vc2NoZW1hcy54bWxzb2FwLm9yZy93cy8yMDA1LzA1L2lkZW50aXR5L2NsYWltcy9uYW1lIjoiQWRtaW5Vc2VyIiwiZXhwIjoxNzg0NzQ4ODg4LCJpc3MiOiJBcGlUZXN0IiwiYXVkIjoiQXBpVGVzdFVzZXJzIn0.L59sHSCuDnyITH79DdbuJwg5aPDQZ3GjIcdaOPcsGZQ
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJodHRwOi8vc2NoZW1hcy54bWxzb2FwLm9yZy93cy8yMDA1LzA1L2lkZW50aXR5L2NsYWltcy9uYW1lIjoiQWRtaW5Vc2VyIiwiZXhwIjoxNzg0Nzg3MTg5LCJpc3MiOiJBcGlUZXN0IiwiYXVkIjoiQXBpVGVzdFVzZXJzIn0.WCBwh1l3i5Y4uK8jCHlysP1Mm666_wtEaxX4CIE3i1U
 Content-Type: application/json
 
 {
-    "name": "Farmacia",
+    "name": "NUEVA",
     "Description": "Artículos cuidado personal"
 }
 
 
 ### Actualizar categoría existente
 PUT http://localhost:8080/api/categories/1
-Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJodHRwOi8vc2NoZW1hcy54bWxzb2FwLm9yZy93cy8yMDA1LzA1L2lkZW50aXR5L2NsYWltcy9uYW1lIjoiQWRtaW5Vc2VyIiwiZXhwIjoxNzg0NzQ4ODg4LCJpc3MiOiJBcGlUZXN0IiwiYXVkIjoiQXBpVGVzdFVzZXJzIn0.L59sHSCuDnyITH79DdbuJwg5aPDQZ3GjIcdaOPcsGZQ
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJodHRwOi8vc2NoZW1hcy54bWxzb2FwLm9yZy93cy8yMDA1LzA1L2lkZW50aXR5L2NsYWltcy9uYW1lIjoiQWRtaW5Vc2VyIiwiZXhwIjoxNzg0Nzg3MTg5LCJpc3MiOiJBcGlUZXN0IiwiYXVkIjoiQXBpVGVzdFVzZXJzIn0.WCBwh1l3i5Y4uK8jCHlysP1Mm666_wtEaxX4CIE3i1U
 Content-Type: application/json
 
 {
@@ -106,12 +109,12 @@ Content-Type: application/json
 
 
 ### Borrado lógico de una categoría
-DELETE http://localhost:8080/api/categories/3
-Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJodHRwOi8vc2NoZW1hcy54bWxzb2FwLm9yZy93cy8yMDA1LzA1L2lkZW50aXR5L2NsYWltcy9uYW1lIjoiQWRtaW5Vc2VyIiwiZXhwIjoxNzg0MzI5MTU4LCJpc3MiOiJBcGlUZXN0IiwiYXVkIjoiQXBpVGVzdFVzZXJzIn0.HKQII77jv2w87bC6wecV1L3X-3Y5d6YiRXE3ROmLJRs
+DELETE http://localhost:8080/api/categories/6
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJodHRwOi8vc2NoZW1hcy54bWxzb2FwLm9yZy93cy8yMDA1LzA1L2lkZW50aXR5L2NsYWltcy9uYW1lIjoiQWRtaW5Vc2VyIiwiZXhwIjoxNzg0ODI0Njk3LCJpc3MiOiJBcGlUZXN0IiwiYXVkIjoiQXBpVGVzdFVzZXJzIn0._uMJM0jXV-UBzGtsNzQut3Mh8UFm441SQHLp0tfzJd0
 
 ### Obtener historial
 GET http://localhost:8080/api/Movements
-Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJodHRwOi8vc2NoZW1hcy54bWxzb2FwLm9yZy93cy8yMDA1LzA1L2lkZW50aXR5L2NsYWltcy9uYW1lIjoiQWRtaW5Vc2VyIiwiZXhwIjoxNzg0NzU2NDE3LCJpc3MiOiJBcGlUZXN0IiwiYXVkIjoiQXBpVGVzdFVzZXJzIn0.R6lhJLgOSoScQ33x08e9fHwEZCSVykF96jI71yR-IiA
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJodHRwOi8vc2NoZW1hcy54bWxzb2FwLm9yZy93cy8yMDA1LzA1L2lkZW50aXR5L2NsYWltcy9uYW1lIjoiQWRtaW5Vc2VyIiwiZXhwIjoxNzg0ODUyMTg3LCJpc3MiOiJBcGlUZXN0IiwiYXVkIjoiQXBpVGVzdFVzZXJzIn0.4kdRx4yTTKpVdv_BzuwbiwadJTfSyUDQzJO0JfHCkzs
 
 
 ### Generar Token de Prueba

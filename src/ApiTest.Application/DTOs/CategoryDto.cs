@@ -1,1 +1,1 @@
-﻿public record CategoryDto(int CategoryId, string Name, string Description);
+﻿public record CategoryDto(int CategoryId, string Name, string Description, bool IsDeleted);

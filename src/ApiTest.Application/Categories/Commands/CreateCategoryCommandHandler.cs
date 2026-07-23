@@ -19,7 +19,7 @@ public class CreateCategoryCommandHandler : IRequestHandler<CreateCategoryComman
 
         const string sql = @"
                             INSERT INTO Categories (Name, Description, IsDeleted)
-                            VALUES (@Name, @Description, 0);
+                            VALUES (@Name, @Description, 1);
                             SELECT CAST(SCOPE_IDENTITY() as int);";
 
         var newId = await connection.QuerySingleAsync<int>(sql, new

@@ -20,7 +20,7 @@ public class DeleteProductCommandHandler : IRequestHandler<DeleteProductCommand,
         
         var product = await _context.Products.FindAsync(new object[] { request.ProductId }, cancellationToken);
 
-        if (product == null || product.IsDeleted)
+        if (product == null || !product.IsDeleted)
             return new CommandResponse(false, "Producto no encontrado o ya eliminado", null);
 
         

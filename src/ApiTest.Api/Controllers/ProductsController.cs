@@ -46,21 +46,6 @@ public class ProductsController : ControllerBase
         return CreatedAtAction(nameof(GetAll), new { id = productId }, productId);
     }
 
-    [HttpPost("movements")]
-    public async Task<ActionResult<CommandResponse>> CreateMovement([FromBody] CreateMovementCommand command)
-    {
-        try
-        {
-            var id = await _mediator.Send(command);
-            
-            return Ok(new CommandResponse(true, "Operación realizada correctamente", id));
-        }
-        catch (InvalidOperationException ex)
-        {
-            return BadRequest(new CommandResponse(false, ex.Message));
-        }
-    }
-
     [HttpDelete("{id}")]
     public async Task<ActionResult<CommandResponse>> Delete(int id)
     {

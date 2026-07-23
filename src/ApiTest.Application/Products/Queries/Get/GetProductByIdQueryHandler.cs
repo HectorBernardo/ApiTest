@@ -14,7 +14,6 @@ public class GetProductByIdQueryHandler : IRequestHandler<GetProductByIdQuery, P
     public async Task<ProductDetailDto> Handle(GetProductByIdQuery request, CancellationToken cancellationToken)
     {
         var product = await _context.Products
-            .Where(p => !p.IsDeleted)
             .Include(p => p.InventoryMovements)
             .AsNoTracking()
             .FirstOrDefaultAsync(p => p.ProductId == request.ProductId, cancellationToken);

@@ -8,6 +8,7 @@ public class ProductDetailDto
     public decimal Price { get; set; }
     public int Stock { get; set; }
     public DateTime CreatedAt { get; set; }
+    public bool IsDeleted { get; set; } = true;
     public List<InventoryMovementDto> InventoryMovements { get; set; } = new();
 }
 

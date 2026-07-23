@@ -18,10 +18,10 @@ public class GetCategoryByIdQueryHandler : IRequestHandler<GetCategoryByIdQuery,
     {
         var category = await _context.Categories
             .AsNoTracking()
-            .FirstOrDefaultAsync(c => c.CategoryId == request.CategoryId && !c.IsDeleted, cancellationToken);
+            .FirstOrDefaultAsync(c => c.CategoryId == request.CategoryId, cancellationToken);
 
         return category == null
             ? null
-            : new CategoryDto(category.CategoryId, category.Name, category.Description);
+            : new CategoryDto(category.CategoryId, category.Name, category.Description, category.IsDeleted);
     }
 }

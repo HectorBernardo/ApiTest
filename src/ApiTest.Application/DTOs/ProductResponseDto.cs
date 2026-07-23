@@ -9,6 +9,7 @@ public class ProductResponseDto
     public int Stock { get; set; }
     public int CategoryId { get; set; }
     public DateTime CreatedAt { get; set; }
+    public bool IsDeleted { get; set; } = true;
     public CategoryResponseDto? Category { get; set; }
 }
 

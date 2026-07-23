@@ -12,7 +12,7 @@ public class DeleteCategoryCommandHandler : IRequestHandler<DeleteCategoryComman
     {
         var connection = _context.Connection;
 
-        const string sql = "UPDATE Categories SET IsDeleted = 1 WHERE CategoryId = @CategoryId";
+        const string sql = "UPDATE Categories SET IsDeleted = 0 WHERE CategoryId = @CategoryId";
 
         await connection.ExecuteAsync(sql, new { request.CategoryId });
 

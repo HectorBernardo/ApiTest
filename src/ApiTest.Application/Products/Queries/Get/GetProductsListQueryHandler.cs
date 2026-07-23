@@ -18,7 +18,6 @@ public class GetProductsListQueryHandler : IRequestHandler<GetProductsListQuery,
     public async Task<List<ProductResponseDto>> Handle(GetProductsListQuery request, CancellationToken cancellationToken)
     {
         return await _context.Products
-        .Where(p => !p.IsDeleted)
         .Include(p => p.Category)
         .AsNoTracking()
         .Select(p => new ProductResponseDto
@@ -35,7 +34,8 @@ public class GetProductsListQueryHandler : IRequestHandler<GetProductsListQuery,
                 CategoryId = p.Category.CategoryId,
                 Name = p.Category.Name,
                 Description = p.Category.Description
-            } : null
+            } : null,
+            IsDeleted = p.IsDeleted
         })
          .ToListAsync(cancellationToken);
     }

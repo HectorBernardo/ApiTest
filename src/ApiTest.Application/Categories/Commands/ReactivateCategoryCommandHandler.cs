@@ -22,11 +22,11 @@ namespace ApiTest.Application.Categories.Commands.ReactivateCategory
             if (category == null)
                 return new CommandResponse(false, "Categoría no encontrada", null);
 
-            if (!category.IsDeleted)
+            if (category.IsDeleted)
                 return new CommandResponse(false, "La categoría ya se encuentra activa", null);
 
             
-            const string sql = "UPDATE Categories SET IsDeleted = 0 WHERE CategoryId = @CategoryId";
+            const string sql = "UPDATE Categories SET IsDeleted = 1 WHERE CategoryId = @CategoryId";
 
             await _context.Connection.ExecuteAsync(sql, new { request.CategoryId });
 

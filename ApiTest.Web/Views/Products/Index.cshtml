@@ -1,0 +1,79 @@
+﻿@using ApiTest.Web.Models
+@model IEnumerable<ProductViewModel>
+
+@{
+    ViewData["Title"] = "Productos";
+}
+
+<div class="container mt-4">
+    <div class="d-flex justify-content-between align-items-center mb-3">
+        <h2>Listado de Productos</h2>
+        <a href="~/Products/Create" class="btn btn-primary">Nuevo Producto</a>
+    </div>
+
+    <table class="table table-bordered table-striped align-middle">
+        <thead class="table-dark">
+            <tr>
+                <th>ID</th>
+                <th>Nombre</th>
+                <th>Descripción</th>
+                <th>Precio</th>
+                <th>Stock</th>
+                <th>Categoría</th>
+                <th>Estatus</th>
+                <th>Acciones</th>
+            </tr>
+        </thead>
+        <tbody>
+            @if (Model != null && Model.Any())
+            {
+                @foreach (var item in Model)
+                {
+                    <tr>
+                        <td>@item.ProductId</td>
+                        <td>@item.Name</td>
+                        <td>@item.Description</td>
+                        <td>$@item.Price.ToString("F2")</td>
+                        <td>@item.Stock</td>
+                        <td>@(string.IsNullOrEmpty(item.CategoryName) ? item.CategoryId.ToString() : item.CategoryName)</td>
+                        <td>
+                            @if (!item.IsDeleted)
+                            {
+                                <span class="badge bg-danger">Inactivo</span>
+                            }
+                            else
+                            {
+                                <span class="badge bg-success">Activo</span>
+                            }
+                        </td>
+                        <td class="text-end">
+                            @if (item.IsDeleted)
+                            {
+                                <a href="/Products/Edit/@item.ProductId" class="btn btn-warning btn-sm">Editar</a>
+                            }
+
+                            @if (item.IsDeleted)
+                            {
+                                <form action="/Products/Delete/@item.ProductId" method="post" style="display:inline;" onsubmit="return confirm('¿Seguro que deseas eliminar este producto?');">
+                                    <button type="submit" class="btn btn-danger btn-sm">Eliminar</button>
+                                </form>
+                            }
+                            else
+                            {
+                                <form action="/Products/Reactivate/@item.ProductId" method="post" style="display:inline;" >
+                                    <button type="submit" class="btn btn-success btn-sm">Reactivar</button>
+                                </form>
+                            }
+                        </td>
+                    </tr>
+                }
+            }
+            else
+            {
+                <tr>
+                    <td colspan="8" class="text-center">No hay productos registrados.</td>
+                </tr>
+            }
+        </tbody>
+    </table>
+</div>

@@ -18,8 +18,7 @@ public class GetCategoriesListQueryHandler : IRequestHandler<GetCategoriesListQu
     {
         return await _context.Categories
             .AsNoTracking()
-            .Where(c => !c.IsDeleted)
-            .Select(c => new CategoryDto(c.CategoryId, c.Name, c.Description))
+            .Select(c => new CategoryDto(c.CategoryId, c.Name, c.Description, c.IsDeleted))
             .ToListAsync(cancellationToken);
     }
 }

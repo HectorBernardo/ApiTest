@@ -12,7 +12,12 @@ services:
       - inventory_network
     volumes:
       - mssql_data:/var/opt/mssql
-
+    healthcheck:
+      test: ["CMD", "/opt/mssql-tools18/bin/sqlcmd", "-S", "localhost", "-U", "sa", "-P", "${DB_PASSWORD}", "-C", "-Q", "SELECT 1"]
+      interval: 10s
+      timeout: 5s
+      retries: 5
+      start_period: 15s
   # Servicio 2: Tu Web API .NET
   api:
     image: apitest-api
@@ -24,10 +29,27 @@ services:
       - "8080:8080"
     environment:
       - ASPNETCORE_ENVIRONMENT=Development
+      - ASPNETCORE_URLS=http://+:8080
+      - ApiSettings__BaseUrl=http://api:8080/api/
       - ConnectionStrings__DefaultConnection=Server=db;Database=ApiTestDb;User Id=sa;Password=${DB_PASSWORD};TrustServerCertificate=True;
       - JwtSettings__Secret=${JWT_SECRET}
     depends_on:
-      - db
+      db:
+        condition: service_healthy
+    networks:
+      - inventory_network 
+
+  web:
+    build:
+      context: .
+      dockerfile: ApiTest.Web/Dockerfile
+    ports:
+      - "5000:8080" # Tu front responderá en http://localhost:5000
+    environment:
+      - ApiSettings__BaseUrl=http://api:8080/api/ # Se conecta al contenedor "api" internamente
+    depends_on:
+      api:
+        condition: service_started
     networks:
       - inventory_network
 

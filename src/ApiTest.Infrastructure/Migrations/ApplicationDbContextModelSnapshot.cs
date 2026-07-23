@@ -52,21 +52,21 @@ namespace ApiTest.Infrastructure.Migrations
                         {
                             CategoryId = 1,
                             Description = "",
-                            IsDeleted = false,
+                            IsDeleted = true,
                             Name = "Tecnología y Electrónica"
                         },
                         new
                         {
                             CategoryId = 2,
                             Description = "",
-                            IsDeleted = false,
+                            IsDeleted = true,
                             Name = "Hogar y Línea Blanca"
                         },
                         new
                         {
                             CategoryId = 3,
                             Description = "",
-                            IsDeleted = false,
+                            IsDeleted = true,
                             Name = "Deportes"
                         });
                 });

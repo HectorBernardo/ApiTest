@@ -25,7 +25,11 @@ public class UpdateProductCommandHandler : IRequestHandler<UpdateProductCommand,
             return new CommandResponse(false, "Producto no encontrado", null);
 
         product.Name = request.Name;
+        product.Description = request.Description;
         product.Price = request.Price;
+        product.Stock = request.Stock;
+        product.CategoryId = request.CategoryId;
+        product.IsDeleted = true;
 
         await _productService.UpdateProductAsync(product);
 

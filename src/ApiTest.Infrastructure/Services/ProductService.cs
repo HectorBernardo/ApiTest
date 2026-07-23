@@ -12,8 +12,8 @@ public class ProductService : IProductService
 
     public async Task CreateProductAsync(Product product)
     {
-        const string sql = @"INSERT INTO Products (Name, Description, Price, Stock, CategoryId) 
-                         VALUES (@Name, @Description, @Price, @Stock, @CategoryId);
+        const string sql = @"INSERT INTO Products (Name, Description, Price, Stock, CategoryId, IsDeleted) 
+                         VALUES (@Name, @Description, @Price, @Stock, @CategoryId, 1);
                          SELECT CAST(SCOPE_IDENTITY() as int);";
 
         var newId = await _context.Connection.QuerySingleAsync<int>(sql, product);
@@ -22,13 +22,13 @@ public class ProductService : IProductService
 
     public async Task DeleteProductAsync(int productId)
     {
-        const string sql = "UPDATE Products SET IsDeleted = 1 WHERE ProductId = @ProductId";
+        const string sql = "UPDATE Products SET IsDeleted = 0 WHERE ProductId = @ProductId";
         await _context.Connection.ExecuteAsync(sql, new { ProductId = productId });
     }
 
     public async Task UpdateProductAsync(Product product)
     {
-        const string sql = "UPDATE Products SET Name = @Name, Description = @Description, Price = @Price WHERE ProductId = @ProductId";
+        const string sql = "UPDATE Products SET Name = @Name, Description = @Description, Price = @Price, Stock = @Stock, CategoryId = @CategoryId, IsDeleted = @IsDeleted WHERE ProductId = @ProductId";
         await _context.Connection.ExecuteAsync(sql, product);
     }
 }

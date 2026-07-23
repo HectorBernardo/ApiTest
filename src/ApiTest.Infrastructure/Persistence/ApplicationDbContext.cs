@@ -83,9 +83,9 @@ public class ApplicationDbContext : DbContext, IApplicationDbContext
         });
 
         modelBuilder.Entity<Category>().HasData(
-            new Category { CategoryId = 1, Name = "Tecnología y Electrónica" },
-            new Category { CategoryId = 2, Name = "Hogar y Línea Blanca" },
-            new Category { CategoryId = 3, Name = "Deportes" }
+            new Category { CategoryId = 1, Name = "Tecnología y Electrónica", IsDeleted = true },
+            new Category { CategoryId = 2, Name = "Hogar y Línea Blanca", IsDeleted = true },
+            new Category { CategoryId = 3, Name = "Deportes", IsDeleted = true }
         );
 
         // Configuration for Product

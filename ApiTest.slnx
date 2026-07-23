@@ -17,4 +17,7 @@
   <Folder Name="/tests/">
     <Project Path="tests/ApiTest.UnitTests/ApiTest.UnitTests.csproj" />
   </Folder>
+  <Folder Name="/web/">
+    <Project Path="ApiTest.Web/ApiTest.Web.csproj" Id="7e5d4046-8dc8-49c1-bcb7-31eb0d6b42a2" />
+  </Folder>
 </Solution>

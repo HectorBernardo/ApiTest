@@ -17,7 +17,7 @@ public class ReactivateProductCommandHandler : IRequestHandler<ReactivateProduct
         var product = await _context.Products.FindAsync(new object[] { request.ProductId }, cancellationToken);
 
         if (product == null) return new CommandResponse(false, "Producto no encontrado", null);
-        if (!product.IsDeleted) return new CommandResponse(false, "El producto ya se encuentra activo", null);
+        if (product.IsDeleted) return new CommandResponse(false, "El producto ya se encuentra activo", null);
 
         
         const string sql = "UPDATE Products SET IsDeleted = 1 WHERE ProductId = @ProductId";

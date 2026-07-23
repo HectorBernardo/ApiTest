@@ -29,7 +29,7 @@ namespace ApiTest.Application.Inventory.Queries
                     ProductName = m.Product != null ? m.Product.Name : string.Empty,
                     Quantity = m.Quantity,
                     MovementType = m.MovementType,
-                    Description = m.Reason,
+                    Reason = m.Reason,
                     CreatedAt = m.CreatedAt
                 })
                 .ToListAsync(cancellationToken);

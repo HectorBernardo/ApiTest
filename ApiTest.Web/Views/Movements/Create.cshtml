@@ -1,0 +1,48 @@
+﻿@model ApiTest.Web.Models.MovementViewModel
+
+@{
+    ViewData["Title"] = "Registrar Movimiento";
+}
+
+<div class="container mt-4">
+    <h2>Registrar Movimiento de Inventario</h2>
+    <hr />
+
+    <form asp-action="Create" method="post" class="needs-validation">
+        <div class="mb-3">
+            <label class="form-label">Producto</label>
+            <select name="ProductId" class="form-select" required>
+                <option value="">-- Selecciona una Producto --</option>
+                @if (ViewBag.Products is IEnumerable<Microsoft.AspNetCore.Mvc.Rendering.SelectListItem> items)
+                {
+                    @foreach (var item in items)
+                    {
+                        <option value="@item.Value">@item.Text</option>
+                    }
+                }
+            </select>
+        </div>
+
+        <div class="mb-3">
+            <label class="form-label">Tipo de Movimiento</label>
+            <select name="MovementType" class="form-select" required>
+                <option value="">-- Selecciona el tipo --</option>
+                <option value="Input">Entrada (Input)</option>
+                <option value="Output">Salida (Output)</option>
+            </select>
+        </div>
+
+        <div class="mb-3">
+            <label class="form-label">Cantidad</label>
+            <input name="Quantity" type="number" class="form-control" min="1" required />
+        </div>
+
+        <div class="mb-3">
+            <label class="form-label">Motivo / Descripción</label>
+            <input name="Reason" class="form-control" placeholder="Ej. Venta al cliente, Compra de stock..." required />
+        </div>
+
+        <button type="submit" class="btn btn-success">Guardar Movimiento</button>
+        <a href="/Movements/Index" class="btn btn-secondary">Cancelar</a>
+    </form>
+</div>

@@ -20,13 +20,14 @@ public class UpdateCategoryCommandHandler : IRequestHandler<UpdateCategoryComman
 
         const string sql = @"
         UPDATE Categories 
-        SET Name = @Name 
+        SET Name = @Name, Description = @Description
         WHERE CategoryId = @CategoryId";
 
         // Dapper maps the properties of the 'request' object to the @Name and @CategoryId parameters
         await connection.ExecuteAsync(sql, new
         {
             request.Name,
+            request.Description,
             request.CategoryId
         });
 

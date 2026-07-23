@@ -72,14 +72,19 @@ app.UseAuthorization();
 
 app.MapControllers();
 
+app.UseSwagger();
+app.UseSwaggerUI(c =>
+{
+    c.SwaggerEndpoint("/swagger/v1/swagger.json", "ApiTest v1");
+    c.RoutePrefix = "swagger"; // Esto hace que al entrar a http://localhost:8080/ abra Swagger de inmediato
+});
+
 if (app.Environment.IsDevelopment())
 {
-    
-    app.UseSwagger();
-    app.UseSwaggerUI();
+   
 }
 
-app.UseHttpsRedirection();
+//app.UseHttpsRedirection();
 
 var summaries = new[]
 {
